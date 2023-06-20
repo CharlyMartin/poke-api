@@ -28,6 +28,6 @@ export function getPokemons(args?: ListArgs) {
 }
 
 // GET ONE
-export function getPokemon(id: number) {
-  return instance.get<PokeAPI.Pokemon>(`/pokemon/${id}`);
+export function getPokemon(name: string) {
+  return instance.get<PokeAPI.Pokemon>(`/pokemon/${name}`);
 }
