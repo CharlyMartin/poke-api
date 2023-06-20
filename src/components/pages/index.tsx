@@ -4,11 +4,15 @@ import { Link, useSearchParams } from "react-router-dom";
 
 import Pokemon from "../blocks/pokemon";
 import Input from "../atoms/input";
+import Button from "../atoms/button";
 import { usePokemons } from "../../hooks/use-pokemons";
 
 export default function IndexPage() {
   const response = usePokemons();
   const [params, setParams] = useSearchParams();
+
+  const limit = params.get("limit") || 20;
+  const offset = params.get("offset") || 0;
 
   return (
     <React.Fragment>
@@ -19,26 +23,50 @@ export default function IndexPage() {
       />
 
       <br />
+      <br />
 
       <div className="flex items-center justify-center">
-        <div className="border-b-2 border-current">
+        <Button
+          onClick={() => {
+            setParams({
+              limit: params.get("limit") || "",
+              offset: getPreviousOffset(),
+            });
+          }}
+        >
+          Previous
+        </Button>
+
+        <div className="mx-6 border-b-2 border-current">
           <span>Show</span>
           <Input
             type="text"
-            defaultValue={params.get("limit") || "20"}
+            defaultValue={limit}
             onChange={(e) => {
               const value = e.target.value;
               if (!value) return;
 
               if (Number(value) >= 0 && Number(value) <= 100) {
-                setParams({ limit: value });
+                setParams({ offset: params.get("offset") || "", limit: value });
               }
             }}
           />
           <span>results</span>
         </div>
+
+        <Button
+          onClick={() => {
+            setParams({
+              limit: params.get("limit") || "",
+              offset: getNextOffset(),
+            });
+          }}
+        >
+          Next
+        </Button>
       </div>
 
+      <br />
       <br />
 
       <Loader
@@ -60,6 +88,23 @@ export default function IndexPage() {
       />
     </React.Fragment>
   );
+
+  function getNextOffset() {
+    const max = response.data?.data.count;
+
+    if (max && Number(offset) + Number(limit) >= max) {
+      return String(max - Number(limit));
+    }
+
+    return String(Number(offset) + Number(limit));
+  }
+
+  function getPreviousOffset() {
+    if (Number(offset) - Number(limit) < 0) {
+      return "0";
+    }
+    return String(Number(offset) - Number(limit));
+  }
 }
 
 type LoaderProps = ReturnType<typeof usePokemons> & {
