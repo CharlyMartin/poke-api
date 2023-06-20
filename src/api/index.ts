@@ -7,15 +7,22 @@ const instance = axios.create({
 });
 
 // GET ALL
-type ListArgs = {
-  limit?: number;
-  offset?: number;
+export type ListArgs = {
+  limit?: string;
+  offset?: string;
+};
+
+export type ListResponse = {
+  results: PokeAPI.NamedAPIResource[];
+  next: string | null;
+  previous: string | null;
+  count: number;
 };
 
 export function getPokemons(args?: ListArgs) {
-  const { limit = 20, offset = 0 } = args || {};
+  const { limit = "20", offset = "0" } = args || {};
 
-  return instance.get<PokeAPI.Pokemon[]>("/pokemon", {
+  return instance.get<ListResponse>("/pokemon", {
     params: { limit, offset },
   });
 }
