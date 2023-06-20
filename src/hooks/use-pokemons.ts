@@ -15,5 +15,6 @@ export function usePokemons() {
     queryKey: ["pokemons", args],
     queryFn: () => getPokemons(args),
     keepPreviousData: true,
+    refetchOnWindowFocus: false,
   });
 }
