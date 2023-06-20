@@ -1,6 +1,7 @@
 import { PokeAPI } from "pokeapi-types";
 
 import Badge from "../atoms/badge";
+import PokemonLoader from "../loaders/pokemon";
 import { usePokemon } from "../../hooks/use-pokemon";
 import { capitalize } from "../../utils";
 
@@ -14,7 +15,7 @@ export default function Pokemon(props: Props) {
   const response = usePokemon(name);
 
   return (
-    <Loader
+    <PokemonLoader
       {...response}
       render={(data) => {
         const { id, name, sprites, types } = data;
@@ -44,18 +45,4 @@ export default function Pokemon(props: Props) {
       }}
     />
   );
-}
-
-type LoaderProps = ReturnType<typeof usePokemon> & {
-  render: (data: PokeAPI.Pokemon) => React.ReactElement;
-};
-
-function Loader(props: LoaderProps) {
-  const { data, render, isLoading, isFetching, error } = props;
-
-  if (isLoading || isFetching) return <p>Loading...</p>;
-  if (error) return <p>Error</p>;
-  if (!data) return <p>No Data</p>;
-
-  return render(data.data);
 }
