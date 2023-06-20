@@ -1,8 +1,8 @@
 import React from "react";
 
 export default function TextInput(props: React.ComponentProps<"input">) {
-  const { value: v, onChange } = props;
-  const [value, setValue] = React.useState(v);
+  const { defaultValue, onChange } = props;
+  const [value, setValue] = React.useState(defaultValue);
 
   return (
     <input

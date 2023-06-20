@@ -25,11 +25,12 @@ export default function IndexPage() {
           <span>Show</span>
           <Input
             type="text"
-            value={params.get("limit") || "20"}
+            defaultValue={params.get("limit") || "20"}
             onChange={(e) => {
               const value = e.target.value;
               if (!value) return;
-              if (value >= "0" && value <= "100") {
+
+              if (Number(value) >= 0 && Number(value) <= 100) {
                 setParams({ limit: value });
               }
             }}
