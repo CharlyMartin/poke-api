@@ -16,15 +16,6 @@ export default function IndexPage() {
 
   return (
     <React.Fragment>
-      <img
-        src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
-        alt="PokeAPI logo"
-        className="mx-auto w-48"
-      />
-
-      <br />
-      <br />
-
       <div className="flex items-center justify-center">
         <Button
           onClick={() => {

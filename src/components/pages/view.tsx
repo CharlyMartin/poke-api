@@ -14,15 +14,6 @@ export default function ViewPage() {
 
   return (
     <React.Fragment>
-      <img
-        src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
-        alt="PokeAPI logo"
-        className="mx-auto w-72"
-      />
-
-      <br />
-      <br />
-
       <div className="flex justify-center">
         <Link to="/">
           <Button>Back</Button>
@@ -69,7 +60,7 @@ export default function ViewPage() {
               <div className="space-x-2">
                 {types.map((type, i) => {
                   return (
-                    <Badge key={i} variant="md">
+                    <Badge key={i} variant="lg">
                       {capitalize(type.type.name)}
                     </Badge>
                   );
