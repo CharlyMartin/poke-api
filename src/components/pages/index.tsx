@@ -1,6 +1,7 @@
 import { PokeAPI } from "pokeapi-types";
 import { Link } from "react-router-dom";
 
+import Pokemon from "../blocks/pokemon";
 import { usePokemons } from "../../hooks/use-pokemons";
 
 export default function IndexPage() {
@@ -11,18 +12,16 @@ export default function IndexPage() {
       {...response}
       render={(data) => {
         return (
-          <ul>
+          <div className="grid grid-cols-5 gap-4">
             {data.map((pokemon) => {
               const { name } = pokemon;
               return (
                 <Link key={name} to={`/pokemon/${name}`}>
-                  <div>
-                    <h1>{name}</h1>
-                  </div>
+                  <Pokemon name={name} />
                 </Link>
               );
             })}
-          </ul>
+          </div>
         );
       }}
     />
