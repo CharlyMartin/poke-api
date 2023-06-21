@@ -1,5 +1,3 @@
-import { PokeAPI } from "pokeapi-types";
-
 import Badge from "../atoms/badge";
 import PokemonLoader from "../loaders/pokemon";
 import { usePokemon } from "../../hooks/use-pokemon";
