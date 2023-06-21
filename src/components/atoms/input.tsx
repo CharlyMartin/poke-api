@@ -7,7 +7,7 @@ export default function TextInput(props: React.ComponentProps<"input">) {
   return (
     <input
       {...props}
-      className="w-16 border-none bg-transparent p-2 focus:outline-none"
+      className="w-12 border-none bg-transparent p-2 focus:outline-none"
       value={value}
       onChange={(e) => {
         if (onChange) onChange(e);

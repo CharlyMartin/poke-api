@@ -64,7 +64,7 @@ export default function IndexPage() {
         {...response}
         render={(data) => {
           return (
-            <div className="grid grid-cols-5 gap-4">
+            <div className="flex flex-col gap-4 lg:grid lg:grid-cols-5 lg:gap-4">
               {data.map((pokemon) => {
                 const { name } = pokemon;
                 return (

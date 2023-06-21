@@ -27,5 +27,5 @@ Here is a non-exhaustive list of things that can be improved on the app:
 - [ ] Better loading states (skeleton & spinners). Right now, only text is used for loading data,
 - [ ] Better error states,
 - [ ] Better data validation / sanitation for search query params on the client,
-- [ ] Grid responsiveness on the index page
+- [x] Grid responsiveness on the index page
 - [ ] Add some tests on the main features
