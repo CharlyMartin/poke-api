@@ -22,9 +22,10 @@ The app relies on [PokeAPI](https://pokeapi.co/) for data. It uses two endpoints
 ## Improvements
 
 Here is a non-exhaustive list of things that can be improved on the app:
-[ ] Image loading optimisation. Right now, the app only uses HTML `<img>` tags,
-[ ] Better loading states (skeleton & spinners). Right now, only text is used for loading data,
-[ ] Better error states,
-[ ] Better data validation / sanitation for search query params on the client,
-[ ] Grid responsiveness on the index page
-[ ] Add some tests on the main features
+
+- [ ] Image loading optimisation. Right now, the app only uses HTML `<img>` tags,
+- [ ] Better loading states (skeleton & spinners). Right now, only text is used for loading data,
+- [ ] Better error states,
+- [ ] Better data validation / sanitation for search query params on the client,
+- [ ] Grid responsiveness on the index page
+- [ ] Add some tests on the main features
